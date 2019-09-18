@@ -1,0 +1,42 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>
+            {{ todo?.title ? todo.title : 'New todo'}}
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <ion-item>
+        <ion-label position="floating">Title</ion-label>
+        <ion-input [(ngModel)]="todo.title"></ion-input>
+    </ion-item>
+
+    <ion-item>
+        <ion-label position="floating">Content</ion-label>
+        <ion-input [(ngModel)]="todo.content"></ion-input>
+    </ion-item>
+
+    <div class="button-bar">
+        <ion-button slot="primary"
+            (click)="save()"
+            color="secondary"
+            [disabled]="!todo.title || !todo.content">
+            <ion-icon slot="start"
+                name="save"></ion-icon>
+            Save
+        </ion-button>
+
+        <ion-button slot="secondary"
+            (click)="cancelTodo()"
+            routerLink="/todo"
+            fill="outline"
+            color="secondary">
+            Cancel
+        </ion-button>
+    </div>
+</ion-content>
